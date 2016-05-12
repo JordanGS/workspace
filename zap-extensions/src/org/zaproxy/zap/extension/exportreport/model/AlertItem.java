@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlType(name = "ExhibitionType", propOrder =
 {
-		"pluginID", "alert", "riskCode", "confidence", "riskDesc", "desc", "solution", "otherInfo", "reference", "CWEID", "WASCID", "URI", "param", "attack", "evidence", "requestHeader", "requestBody", "responseHeader", "responseBody", "artists"
+		"pluginID", "alert", "riskCode", "confidence", "riskDesc", "desc", "solution", "otherInfo", "reference", "CWEID", "WASCID", "URI", "param", "attack", "evidence", "requestHeader", "requestBody", "responseHeader", "responseBody", "placeholder"
 })
 public class AlertItem
 {
@@ -56,7 +56,7 @@ public class AlertItem
 	private String requestbody;
 	private String responsebody;
 
-	List<String>	artists;
+	List<String>	placeholder;
 
 	public String getAlert()
 	{
@@ -294,15 +294,15 @@ public class AlertItem
 	
 	// ---------------------------------------------------------------
 	
-	public List<String> getArtists()
+	public List<String> getPlaceholder()
 	{
-		return artists;
+		return placeholder;
 	}
 
-	@XmlElement(name = "Artists")
-	public void setArtists(List<String> artists)
+	@XmlElement(name = "Placeholder")
+	public void setPlaceholder(List<String> placeholder)
 	{
-		this.artists = artists;
+		this.placeholder = placeholder;
 	}
 	// ---------------------------------------------------------------
 }
