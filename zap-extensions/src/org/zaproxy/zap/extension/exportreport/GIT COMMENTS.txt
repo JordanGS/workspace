@@ -1,0 +1,75 @@
+Export Report v1.0 for Alpha Commit
+
+Committing plugin Export Report v1.0 to the alpha branch along with an updated build.xml file, json library file and .classpath file.
+
+1) Move package info under license blurb
+2) Replaced all wildcard imports with specific ones except for SpringUtilities.java
+3) Fixed usage of MessageFormat.format, removed new Object[] {path} usage
+4) Messages displayed in the GUI are now internationalized messages from Messages.properties file
+5) Changed package name to lower case along with message properties
+6) Removed some excess commenting, some still left and is to be removed in the future
+7) Removed Double semi-colon
+8) Removed auto generated constructor
+9) Removed unnecessary comments, only kept AUTHOR and SPONSOR. Ask about JavaDoc
+10) Created constant for ".dump.xml"
+11) Created constant for "UTF-8"
+12) Used the variable NAME to set the name during initialization.
+13) Printed message to logger saying the file could not be removed, also considering a gui message but deferring that for now.
+14) Changed ImageIcon error message to go to logger and not system.err.println.
+15) Changed the date format "EEE, d MMM yyyy HH:mm:ss z(Z)" to a constant.
+16) Removed 2 occurrences of e.printStackTrace() and sent the message to the logger.
+17) If Arial is unavailable then use the system default for the label.
+18) Removed menu.report.html.generate and replaced it with exportreport.menu.export.label
+19) Bundle the oracle license notice in the add-on.
+20) Include json library as part of the add on and the alpha build path.
+21) Do not touch the date at the moment.
+22) Removed redundant toString calls.
+23) Removed redundant variable declarations.
+24) Changes some message dialog to warning dialogs
+25) Changed JOptionPage show message to standard zap show message
+26) Removed the todo file and let Git track history and change requests.
+27) AlertItem.java replaced Artists with Placeholder, this is a placeholder for a 2.0 addition.
+28) Added public identified to class FileType
+
+29) Renamed all packages to lowercase
+30) Removed unused import JOptionPane from ExportReport
+31) Added static final to Logger's
+32) Added private static to Task class in ExportReport and modified subsequent methods to static
+33) Changed XML_PATH to xmlPath
+34) Added return null to UnsupportedEncodingException in ExportReport
+35) Remove redundant parenthesis from ExportReport
+36) Changed method name TRANSFORMATION to transformation
+37) Removed al J Element parameters from methods
+38) Changed all to final static since that is expected order.
+39) path + fileName + ".xml" is now a variable
+40) Removed unnecessary null assignments
+41) Updated negation rules for file displayed
+42) Removed trailing white space characters
+43) Renamed bool to valid for ease of understanding
+44) Removed WritableFileChooser parameter
+45) Changed to StandardCharsets.ISO_8859_1
+46) Changed to StandardCharsets.UTF_8.name() and removed global variable from Utils
+47) Removed fc.getSelectedFile from doInBackground method and added a File f variable to the Task constructor
+48) Create native loggers for each class and removed the use of custom loggers
+49) Removed 'f_view = null' resets, except for the first initialization
+50) deleteFile , parameter err removed and it's usage changed
+51) Added finally block to deleteFile to ensure that's deleted in case of exception
+52) Changed boolean bool to valid
+53) Map the risk values to the translations
+54) Call alert.getMessage() only once and only if it's needed.
+55) transformation and jsonExport removed the absolutePath parameter, determine the use 
+56) Removed the custom logger in the above
+57) Removed the ExtensionExportReport constructor with parameter
+59) Changed all Utils constants to upper case
+59) Added command line options to the plugin
+60) Removed initilizeList and replaced it with init
+
+Notes:
+
+https://github.com/zaproxy/zap-extensions/pull/363?_pjax=%23js-repo-pjax-container
+
+1) Probably better to do the check in the (overridden) WritableFileChooser.approveSelection() method, to avoid closing and opening the dialogue to just shown the warn message.
+2) Remove //menuExportReport.setText(Constant.messages.getString("exportreport.menu.export.label")); from ExtensionExportReport.java
+3) ExtensionExportReport.java Look into type, List<String> instead of ArrayList<String> for entire project.
+4) ReportFilter.java use a StringBuilder to create the string strExtension "All"  it's more efficient
+5) Remove all @SuppressWarnings("unused") and remove what is actually not in use.
