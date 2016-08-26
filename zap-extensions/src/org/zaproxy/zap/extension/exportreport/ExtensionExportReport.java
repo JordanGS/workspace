@@ -198,58 +198,58 @@ public class ExtensionExportReport extends ExtensionAdaptor implements CommandLi
 
     /* Source Card return data */
     public String extensionGetTitle() {
-        System.out.println(cardSource.getTitle());
+        // System.out.println(cardSource.getTitle());
         return cardSource.getTitle();
     }
 
     public String extensionGetBy() {
-        System.out.println(cardSource.getBy());
+        // System.out.println(cardSource.getBy());
         return cardSource.getBy();
     }
 
     public String extensionGetFor() {
-        System.out.println(cardSource.getFor());
+        // System.out.println(cardSource.getFor());
         return cardSource.getFor();
     }
 
     public String extensionGetScanDate() {
-        System.out.println(cardSource.getScanDate());
+        // System.out.println(cardSource.getScanDate());
         return cardSource.getScanDate();
     }
 
     public String extensionGetReportDate() {
-        System.out.println(cardSource.getReportDate());
+        // System.out.println(cardSource.getReportDate());
         return cardSource.getReportDate();
     }
 
     public String extensionGetScanVer() {
-        System.out.println(cardSource.getScanVer());
+        // System.out.println(cardSource.getScanVer());
         return cardSource.getScanVer();
     }
 
     public String extensionGetReportVer() {
-        System.out.println(cardSource.getReportVer());
+        // System.out.println(cardSource.getReportVer());
         return cardSource.getReportVer();
     }
 
     public String extensionGetDescription() {
-        System.out.println(cardSource.getDescription());
+        // System.out.println(cardSource.getDescription());
         return cardSource.getDescription();
     }
 
     /* Alert Risk Card return data */
     public ArrayList<String> getIncludedAlertSeverity() {
-        for (int i = 0; i < cardAlertRisk.getSourceListModel().size(); i++) {
-            System.out.println(cardAlertRisk.getSourceListModel().get(i));
-        }
+        // for (int i = 0; i < cardAlertRisk.getSourceListModel().size(); i++) {
+        // System.out.println(cardAlertRisk.getSourceListModel().get(i));
+        // }
         return cardAlertRisk.getSourceListModel();
     }
 
     /* Alert Details Card return data */
     public ArrayList<String> getIncludedAlertDetails() {
-        for (int i = 0; i < cardAlertDetails.getSourceListModel().size(); i++) {
-            System.out.println(cardAlertDetails.getSourceListModel().get(i));
-        }
+        // for (int i = 0; i < cardAlertDetails.getSourceListModel().size(); i++) {
+        // System.out.println(cardAlertDetails.getSourceListModel().get(i));
+        // }
         return cardAlertDetails.getSourceListModel();
     }
 

@@ -108,7 +108,7 @@
 					</tr>
 					<tr>
 						<td class="darkstyle">
-							<div>Preparesd For:</div>
+							<div>Prepared For:</div>
 						</td>
 						<td class="lightstyle" style="width: 25%;">
 							<div>

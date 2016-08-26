@@ -63,6 +63,11 @@ Committing plugin Export Report v1.0 to the alpha branch along with an updated b
 59) Changed all Utils constants to upper case
 59) Added command line options to the plugin
 60) Removed initilizeList and replaced it with init
+61) Comment out all System.out.println
+62) Fixed spelling mistakes
+63) Formatted message.properties
+64) Removed unnecessary characters
+
 
 Notes:
 
