@@ -1,0 +1,3 @@
+https://github.com/thc202/zaproxy/releases/tag/alert-method-non-null
+
+Apply the following updates to attached zip.
