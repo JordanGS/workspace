@@ -1,6 +1,21 @@
-Export Report v1.0 for Alpha Commit
+Export Report Commit Change Log for Version 2
 
-Committing plugin Export Report v1.0 to the alpha branch along with an updated build.xml file, json library file and .classpath file.
+-Added API Support in preparation for integration with the Official ZAP Jenkins Plugin
+-Changed XML export method for delete bug fix
+-Command Line and API Call will no longer open a browser
+-Added enabled option for format types
+-Fixed spelling mistakes
+-Bug fixes
+-Change Message.properties
+-Updated HTML doc
+-Changed supporting images
+-Changed icons for each export format
+
+---
+
+Export Report v1 for Alpha Commit
+
+Committing plugin Export Report v1 to the alpha branch along with an updated build.xml file, json library file and .classpath file.
 
 1) Move package info under license blurb
 2) Replaced all wildcard imports with specific ones except for SpringUtilities.java
