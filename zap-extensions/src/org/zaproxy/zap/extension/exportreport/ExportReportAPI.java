@@ -81,7 +81,9 @@ public class ExportReportAPI extends ApiImplementor {
 
     @Override
     public ApiResponse handleApiAction(String name, JSONObject params) throws ApiException {
-        if (logger.isDebugEnabled()) logger.debug("Request for handleApiAction: " + name + " (params: " + params.toString() + ")");
+        if (logger.isDebugEnabled()) {
+            logger.debug("Request for handleApiAction: " + name + " (params: " + params.toString() + ")");
+        }
 
         switch (name) {
         case ACTION_GENERATE:
@@ -90,7 +92,7 @@ public class ExportReportAPI extends ApiImplementor {
             String fileExtension = params.getString(ACTION_PARAM_FILE_EXTENSION);
 
             if (!extension.canWrite(absolutePath)) {
-                logger.error(Constant.messages.getString("exportreport.message.console.error.file.writable", absolutePath));
+                logger.warn(Constant.messages.getString("exportreport.message.console.error.file.writable", absolutePath));
                 return ApiResponseElement.FAIL;
             }
 
@@ -100,11 +102,13 @@ public class ExportReportAPI extends ApiImplementor {
                 valid = true;
             }
             if (!valid) {
-                logger.error(Constant.messages.getString("exportreport.message.console.error.file.extension", fileExtension));
+                logger.warn(Constant.messages.getString("exportreport.message.console.error.file.extension", fileExtension));
                 return ApiResponseElement.FAIL;
             }
 
-            if (logger.isDebugEnabled()) logger.debug(Constant.messages.getString("exportreport.message.console.info.path"));
+            if (logger.isDebugEnabled()) {
+                logger.debug(Constant.messages.getString("exportreport.message.console.info.path"));
+            }
             ArrayList<String> sourceDetails = new ArrayList<String>(Arrays.asList((params.getString(ACTION_PARAM_SOURCE_DETAILS)).split(";")));
             ArrayList<String> alertSeverityFlags = new ArrayList<String>(Arrays.asList((params.getString(ACTION_PARAM_ALERT_SEVERITY)).split(";")));
             ArrayList<String> alertDetailsFlags = new ArrayList<String>(Arrays.asList((params.getString(ACTION_PARAM_ALERT_DETAILS)).split(";")));
@@ -114,34 +118,46 @@ public class ExportReportAPI extends ApiImplementor {
                 return ApiResponseElement.FAIL;
             }
 
-            if (logger.isDebugEnabled()) logger.debug(Constant.messages.getString("exportreport.message.console.info.length", Constant.messages.getString("exportreport.menu.source.label"), Constant.messages.getString("exportreport.message.console.info.status.valid")));
-            if (logger.isDebugEnabled()) logger.debug(Constant.messages.getString("exportreport.message.console.info.content", Constant.messages.getString("exportreport.menu.source.label"), Constant.messages.getString("exportreport.message.console.info.status.unchecked")));
+            if (logger.isDebugEnabled()) {
+                logger.debug(Constant.messages.getString("exportreport.message.console.info.length", Constant.messages.getString("exportreport.menu.source.label"), Constant.messages.getString("exportreport.message.console.info.status.valid")));
+                logger.debug(Constant.messages.getString("exportreport.message.console.info.content", Constant.messages.getString("exportreport.menu.source.label"), Constant.messages.getString("exportreport.message.console.info.status.unchecked")));
+            }
 
             if (alertSeverityFlags.size() != extension.getAlertSeverity().size()) {
                 logger.error(Constant.messages.getString("exportreport.message.console.error.risk.severity", Constant.messages.getString("exportreport.menu.risk.label"), alertSeverityFlags.size(), extension.getAlertSeverity().size(), Constant.messages.getString("exportreport.risk.severity.high.label"), Constant.messages.getString("exportreport.risk.severity.medium.label"), Constant.messages.getString("exportreport.risk.severity.low.label"), Constant.messages.getString("exportreport.risk.severity.info.label")));
                 return ApiResponseElement.FAIL;
             }
-            if (logger.isDebugEnabled()) logger.debug(Constant.messages.getString("exportreport.message.console.info.length", Constant.messages.getString("exportreport.menu.risk.label"), Constant.messages.getString("exportreport.message.console.info.status.valid")));
+            if (logger.isDebugEnabled()) {
+                logger.debug(Constant.messages.getString("exportreport.message.console.info.length", Constant.messages.getString("exportreport.menu.risk.label"), Constant.messages.getString("exportreport.message.console.info.status.valid")));
+            }
 
             if (!extension.validList(alertSeverityFlags)) {
-                logger.error(Constant.messages.getString("exportreport.message.console.error.valid.list", Constant.messages.getString("exportreport.menu.risk.label")));
+                logger.warn(Constant.messages.getString("exportreport.message.console.error.valid.list", Constant.messages.getString("exportreport.menu.risk.label")));
                 return ApiResponseElement.FAIL;
             }
-            if (logger.isDebugEnabled()) logger.debug(Constant.messages.getString("exportreport.message.console.info.content", Constant.messages.getString("exportreport.menu.risk.label"), Constant.messages.getString("exportreport.message.console.info.status.valid")));
+            if (logger.isDebugEnabled()) {
+                logger.debug(Constant.messages.getString("exportreport.message.console.info.content", Constant.messages.getString("exportreport.menu.risk.label"), Constant.messages.getString("exportreport.message.console.info.status.valid")));
+            }
 
             if (alertDetailsFlags.size() != extension.maxList) {
                 logger.error(Constant.messages.getString("exportreport.message.console.error.details", Constant.messages.getString("exportreport.menu.details.label"), alertDetailsFlags.size(), extension.maxList, Constant.messages.getString("exportreport.details.cweid.label"), Constant.messages.getString("exportreport.details.wascid.label"), Constant.messages.getString("exportreport.details.description.label"), Constant.messages.getString("exportreport.details.otherinfo.label"), Constant.messages.getString("exportreport.details.solution.label"), Constant.messages.getString("exportreport.details.reference.label"), Constant.messages.getString("exportreport.details.requestheader.label"), Constant.messages.getString("exportreport.details.responseheader.label"), Constant.messages.getString("exportreport.details.requestbody.label"), Constant.messages.getString("exportreport.details.responsebody.label")));
                 return ApiResponseElement.FAIL;
             }
-            if (logger.isDebugEnabled()) logger.debug(Constant.messages.getString("exportreport.message.console.info.length", Constant.messages.getString("exportreport.menu.details.label"), Constant.messages.getString("exportreport.message.console.info.status.valid")));
+            if (logger.isDebugEnabled()) {
+                logger.debug(Constant.messages.getString("exportreport.message.console.info.length", Constant.messages.getString("exportreport.menu.details.label"), Constant.messages.getString("exportreport.message.console.info.status.valid")));
+            }
 
             if (!extension.validList(alertDetailsFlags)) {
-                logger.error(Constant.messages.getString("exportreport.message.console.error.valid.list", Constant.messages.getString("exportreport.menu.details.label")));
+                logger.warn(Constant.messages.getString("exportreport.message.console.error.valid.list", Constant.messages.getString("exportreport.menu.details.label")));
                 return ApiResponseElement.FAIL;
             }
-            if (logger.isDebugEnabled()) logger.debug(Constant.messages.getString("exportreport.message.console.info.content", Constant.messages.getString("exportreport.menu.details.label"), Constant.messages.getString("exportreport.message.console.info.status.valid")));
+            if (logger.isDebugEnabled()) {
+                logger.debug(Constant.messages.getString("exportreport.message.console.info.content", Constant.messages.getString("exportreport.menu.details.label"), Constant.messages.getString("exportreport.message.console.info.status.valid")));
+            }
 
-            if (logger.isDebugEnabled()) logger.debug(Constant.messages.getString("exportreport.message.console.info.pass.generate"));
+            if (logger.isDebugEnabled()) {
+                logger.debug(Constant.messages.getString("exportreport.message.console.info.pass.generate"));
+            }
 
             ArrayList<String> alertSeverityTemp = extension.generateList(alertSeverityFlags, extension.getAlertSeverity());
 
@@ -151,12 +167,17 @@ public class ExportReportAPI extends ApiImplementor {
             ArrayList<String> alertDetailsTemp = extension.generateList(alertDetailsFlags, alertDetailsFull);
 
             try {
-                if (extension.generateReport(absolutePath, fileExtension, sourceDetails, alertSeverityTemp, alertDetailsTemp)){
-                    if (logger.isDebugEnabled()) logger.debug(Constant.messages.getString("exportreport.message.console.info.pass.path", absolutePath));
+                if (extension.generateReport(absolutePath, fileExtension, sourceDetails, alertSeverityTemp, alertDetailsTemp)) {
+                    if (logger.isDebugEnabled()) {
+                        logger.debug(Constant.messages.getString("exportreport.message.console.info.pass.path", absolutePath));
+                    }
                     return ApiResponseElement.OK;
                 }
+                else {
+                    return ApiResponseElement.FAIL;
+                }
             } catch (Exception e) {
-                logger.error(Constant.messages.getString("exportreport.message.console.error.exception", e.getMessage()), e);
+                logger.warn(Constant.messages.getString("exportreport.message.console.error.exception", e.getMessage()), e);
                 return ApiResponseElement.FAIL;
             }
         default:
@@ -166,14 +187,15 @@ public class ExportReportAPI extends ApiImplementor {
 
     @Override
     public ApiResponseList handleApiView(String name, JSONObject params) throws ApiException {
-        if (logger.isDebugEnabled()) logger.debug("Request for handleApiAction: " + name + " (params: " + params.toString() + ")");
-
+        if (logger.isDebugEnabled()) {
+            logger.debug("Request for handleApiAction: " + name + " (params: " + params.toString() + ")");
+        }
         switch (name) {
         case VIEW_FORMATS:
             final ApiResponseList resultList = new ApiResponseList(name);
             FileList fileList = extension.getFileList();
             for (FileType item : fileList) {
-                if (item.getEnabled())
+                if (item.isEnabled())
                     resultList.addItem(new ApiResponseElement("format", item.getExtension()));
             }
             return resultList;

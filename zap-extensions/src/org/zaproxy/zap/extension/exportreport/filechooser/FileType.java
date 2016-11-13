@@ -68,7 +68,7 @@ public class FileType {
         return icon;
     }
 
-    public boolean getEnabled() {
+    public boolean isEnabled() {
         return enabled;
     }
 }

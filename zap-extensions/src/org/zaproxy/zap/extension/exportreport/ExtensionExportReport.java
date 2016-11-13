@@ -74,8 +74,8 @@ public class ExtensionExportReport extends ExtensionAdaptor implements CommandLi
     private ArrayList<String> alertDetails = new ArrayList<String>();
     private ArrayList<String> alertAdditional = new ArrayList<String>();
     private FileList fileList = new FileList();
-    public int maxList = 0;
-    public int SOURCE_COUNT = 8;
+    private int maxList = 0;
+    public static final int SOURCE_COUNT = 8;
 
     private static final int ARG_EXPORT_REPORT_IDX = 0;
     private static final int ARG_SOURCE_INFO_IDX = 1;

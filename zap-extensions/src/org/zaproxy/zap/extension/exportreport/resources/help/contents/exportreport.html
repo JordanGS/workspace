@@ -15,19 +15,19 @@
             <LI>Created by <A href="https://github.com/JordanGS">JordanGS</A>.</LI>
             <LI>Minimum Supported Version: Weekly Release ZAP_D-2016-09-05</LI>
             <LI>Project on  <A href="https://github.com/JordanGS/workspace">GitHub</A>. You can also find a .zip of the minimum supported release in the zap-download folder.</LI>
-			<LI>Supported and incorporated in the <A href="https://wiki.jenkins-ci.org/display/JENKINS/ZAProxy+Plugin">Official OWASP Zed Attack Proxy Jenkins Plugin</A>.</LI>
-		</UL>
+            <LI>Supported and incorporated in the <A href="https://wiki.jenkins-ci.org/display/JENKINS/ZAProxy+Plugin">Official OWASP Zed Attack Proxy Jenkins Plugin</A>.</LI>
+        </UL>
 
         <H2><U>Table of Contents</U></H2>
         <UL>
-			<LI>ZAP UI</LI>
+            <LI>ZAP UI</LI>
             <LI>Command Line</LI>
             <LI>API Calls</LI>
         </UL>
 
         <HR>
 
-		<a name="zap-ui"></a> 
+        <a name="zap-ui"></a> 
         <H2><U>ZAP UI</U></H2>
 
         <H4>Source Info</H4>
@@ -41,7 +41,7 @@
             <LI>Scan Version - Placeholder for future</LI>
             <LI>Report Version - Defaults to current version of ZAP tool</LI>
         </UL>
-        <H4>Version 1.1 UI</H4>
+        <H4>Version 2 UI</H4>
         <UL style="list-style-type:none">
             <LI>
                 <img src="images/SourceInfo.png" alt="Source Info">
@@ -139,7 +139,7 @@
 
         <HR>
 
-		<a name="command-line"></a> 
+        <a name="command-line"></a> 
         <H2><U>Command Line</U></H2>
         The extension can be run from the command line as well and requires the following arguments to be passed in to generate a report.
 
@@ -331,7 +331,7 @@
 
         <UL style="list-style: none;">
             <LI>
-                <H4>Puttin it all together! (Windows)</H4>
+                <H4>Putting it all together! (Windows)</H4>
                 <OL>
                     <LI>Open a command prompt</LI>
                     <LI>Navigate to location where the zap.bat file is located</LI>
@@ -344,7 +344,7 @@
 
         <HR>
 
-		<a name="api-calls"></a> 
+        <a name="api-calls"></a> 
         <H2><U>API Calls</U></H2>
 
         The extension can be accessed with API calls and requires the following arguments to be passed in to generate a report.
@@ -354,24 +354,36 @@
         The restrictions are the same as those for Command Line above.
 
         <H4>Usage Example:</H4>
-        <PRE>
-            <CODE>
-    Map<String, String> map = new HashMap<String, String>();
-    String API_KEY = "ZAPROXY-PLUGIN"
-    String absolutePath = "/path/to/save/report.xhtml";
-    String extension = "xhtml";
-    String sourceDetails = "Vulnerability Report of MyApp.com;JordanGS;Lost Souls;August 15, 2016;August 18, 2016;ZAP_D-2016-08-15;ZAP_D-2016-08-15;Lorem ipsum dolor sit amet, pri corpora ancillae adolescens in. Ea usu atomorum tincidunt, ne munere regione has. Ne sea summo tation, et sed nibh nostrum singulis. Nec causae viderer discere eu.";
-    String alertSeverity = "t;t;f;t";
-    String alertDetails = "t;t;t;t;t;t;f;f;f;f";
-    
-    map.put("apikey", API_KEY);
-    map.put("absolutePath", absolutePath);    	// String represeting the aboslute path to save destination for the report
-    map.put("fileExtension", extension);    	// String represeting the extension of the report
-    map.put("sourceDetails", sourceDetails);    // String seperated by ; for each entry
-    map.put("alertSeverity", alertSeverity);    // String seperated by ; for each entry
-    map.put("alertDetails", alertDetails);    	// String seperated by ; for each entry
-    ApiResponseElement val = (ApiResponseElement) clientApi.callApi("exportreport", "action", "generate", map);
-            </CODE>
-        </PRE>
+        <BLOCKQUOTE><PRE><CODE>
+Map&lt;String, String&gt; map = new HashMap&lt;String, String&gt;();
+String API_KEY = "ZAPROXY-PLUGIN"
+String absolutePath = "/path/to/save/report.xhtml";
+String extension = "xhtml";
+String sourceDetails = "Vulnerability Report of MyApp.com;JordanGS;Lost Souls;" +
+    "August 15, 2016;August 18, 2016;ZAP_D-2016-08-15;ZAP_D-2016-08-15;" + 
+    "Lorem ipsum dolor sit amet, pri corpora ancillae adolescens in. Ea " + 
+    "usu atomorum tincidunt, ne munere regione has. Ne sea summo tation, " +
+    "et sed nibh nostrum singulis. Nec causae viderer discere eu.";
+String alertSeverity = "t;t;f;t";
+String alertDetails = "t;t;t;t;t;t;f;f;f;f";
+
+map.put("apikey", API_KEY);
+
+// String representing the absolute path to save destination for the report
+map.put("absolutePath", absolutePath)
+
+// String representing the extension of the report
+map.put("fileExtension", extension);
+
+// String separated by ; for each entry
+map.put("sourceDetails", sourceDetails);
+
+// String separated by ; for each entry
+map.put("alertSeverity", alertSeverity);
+
+//String separated by ; for each entry
+map.put("alertDetails", alertDetails);
+</CODE></PRE></BLOCKQUOTE>
+<BLOCKQUOTE><CODE>ApiResponseElement val = (ApiResponseElement) clientApi.callApi("exportreport", "action", "generate", map);</CODE></BLOCKQUOTE>
     </BODY>
 </HTML>
